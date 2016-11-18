@@ -1,23 +1,31 @@
-C      Dato un vettore di 100 elementi individua il minimo nei primi 50
-C      e il massimo negli altri 50
-       Program vettore
-       Implicit none
-       Integer DV, nmax, i
-       Real A(1:100)
-       Real MIN, MAX
-       Do 10 i=1,100
-          Write(*,*)'Inserisci l''elemento',i,' del vettore'
-          Read(*,*)A(i)
-10     Continue
-       MIN=A(1)
-       MAX=A(51)
-       Do 20 i=1,100
-          if((i.le.50).and.(A(i).lt.MIN))MIN=A(i)
-          if((i.gt.50).and.(A(i).gt.MAX))MAX=A(i)
-20     Continue
-C      stampo il minimo e il massimo
-       Write(*,*)
-       Write(*,*)'Il minimo dei primi 50 elementi Š:',MIN
-       Write(*,*)
-       Write(*,*)'Il massimo degli altri 50 elementi Š:',MAX
-       End
+C     sum even numbers - multiplies odd numbers
+C
+      Program
+      Integer i, contr, DIMA
+      Integer A(1:100)
+      Real resto, sum, product
+      i=0
+      Write(*,*)"Enter the sequence of numbers"
+100    i=i+1
+      Read(*,*)A(i)
+      Write(*,*)'Do you want to continue to give information?
+     + If yes type 1, otherwise type 0'
+      read(*,*) contr
+      if(contr.eq.1) goto 100
+      sum=0
+      DIMA=i
+      write(*,*) DIMA
+      product=1
+      Do 10 i=1,DIMA
+         if(A(i).NE.0)then
+            resto=mod(A(i),2)
+            if(resto.eq.0)then
+               sum=sum+A(i)
+            else
+               product=product*A(i)
+            end if
+         end if
+10    Continue
+      Write(*,*)'The sum of the even numbers is:',sum
+      Write(*,*)'The product of the odd numbers is:',product
+      End
